@@ -1,0 +1,55 @@
+{% extends 'manager/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+
+    <!-- Shopping Cart Section Begin -->
+    <section class="shopping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="cart-table">
+                        <table>
+                            <thead>
+                                <tr style="background-color: lightgray">
+                                    <th>Res. ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Contact</th>
+                                    <th>Persons</th>
+                                    <th>date</th>
+                                    <th>Time</th>
+                                    <th>P Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if reservations %}
+                                {% for reservations in reservations %}
+                                <tr>
+                                    <td>{{ reservations.id }}</td>
+                                    <td>{{ reservations.name }}</td>
+                                    <td>{{ reservations.email }}</td>
+                                    <td>{{ reservations.mobile }}</td>
+                                    <td>{{ reservations.person }}</td>
+                                    <td>{{ reservations.date }}</td>
+                                    <td>{{ reservations.time }}</td>
+                                    <td><span class="badge badge-success">Success</span></td>
+                                </tr>
+                                {% endfor %}
+                                {% else %}
+                                <b><h4>No Reservations Found.</b></h4><br>
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Shopping Cart Section End -->
+
+    {% endblock %}

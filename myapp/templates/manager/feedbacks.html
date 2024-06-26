@@ -1,0 +1,50 @@
+{% extends 'manager/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+<!-- Shopping Cart Section Begin -->
+<section class="shopping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="cart-table">
+                    <table>
+                        <thead>
+                            <tr style="background-color: lightgray">
+                                <th>FEEDBACK. ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Rating</th>
+                                <th>Message</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if feedbacks %}
+                            {% for feedbacks in feedbacks %}
+                            <tr>
+                                <td>{{ feedbacks.id }}</td>
+                                <td>{{ feedbacks.name }}</td>
+                                <td>{{ feedbacks.email }}</td>
+                                <td>{{ feedbacks.rating }}</td>
+                                <td>{{ feedbacks.message }}</td>
+                                
+                                
+                            </tr>
+                            {% endfor %}
+                            {% else %}
+                            <b><h4>No Feedbacks Yet.</b></h4><br>
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shopping Cart Section End -->
+
+    {% endblock %}

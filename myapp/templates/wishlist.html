@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+
+    <!-- Shopping Cart Section Begin -->
+    <section class="shopping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="cart-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th class="p-name">iTEM Name</th>
+                                    <th>Description</th>
+                                    <th>Price</th>
+                                    <th></th>
+                                    <th><i class="ti-close"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if wishlist %}
+                                {% for i in wishlist %}
+                                <tr>
+                                    <td class="cart-pic first-row"><img src="{{ i.food_item.image.url }}" alt="" width="190" height="190"></td>
+                                    <td class="cart-title first-row">
+                                        <h5>{{ i.food_item.name }}</h5>
+                                    </td>
+                                    
+                                    <td class="qua-col first-row">
+                                        <div class="quantity">
+                                            <span>{{ i.food_item.description }}</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-price first-row">&#8377;{{ i.food_item.price1 }}</td>
+                                    <td class="p-price first-row"><a href="{% url 'add_to_cart' pk=i.food_item.pk %}"><i class="icon_bag_alt"></i></a></td>
+                                    <td class="close-td first-row"><a href="{% url 'remove_from_wishlist' pk=i.food_item.pk %}"><i class="ti-close"></i></a></td>
+                                </tr>
+                                {% endfor %}
+                                {% else %}
+                                <tr>
+                                    <td colspan="6"><h4><b>Your wishlist is empty.</b></h4></td>
+                                </tr>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Shopping Cart Section End -->
+
+    {% endblock %}

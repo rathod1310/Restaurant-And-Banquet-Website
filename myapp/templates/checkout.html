@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+<style>
+    #payment-method {
+  width: 70%;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+}
+</style>
+    <!-- Shopping Cart Section Begin -->
+    <section class="checkout-section spad">
+        <div class="container">
+            <form action="{%  url 'checkout' %}" name="checkout" method="POST" class="checkout-form"> 
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h4>Biiling Details</h4>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label for="fir">First Name<span>*</span></label>
+                                <input type="text" id="fir" name="fname" value="{{user.fname}}" readonly>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="last">Last Name<span>*</span></label> 
+                                <input type="text" id="last" name="lname" value="{{user.lname}}" readonly>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="email">Email Address<span>*</span></label>
+                                <input type="text" id="email" name="email" value="{{user.email}}">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="phone">Phone<span>*</span></label>
+                                <input type="text" id="phone" name="phone" value="{{user.mobile}}" pattern="[0-9]{10}">
+                            </div>
+                            <div class="col-lg-12">
+                                <label for="street">Address<span>*</span></label>
+                                <input type="text" id="street" class="street-first" name="address" value="{{user.address}}">
+                                <input type="text">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="town">Town / City<span>*</span></label>
+                                <input type="text" id="town"  name="city" value="{{user.city}}">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="state">State<span>*</span></label>
+                                <input type="text" id="state"  name="state" value="{{user.state}}">
+                            </div>
+                            <div class="col-lg-12">
+                                <label for="zip">Postcode / ZIP</label>
+                                <input type="text" id="zip" name="pincode" value="{{user.pincode}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="checkout-content">
+                            <input type="text" placeholder="Enter Your Coupon Code">
+                        </div>
+                        <div class="place-order">
+                            <h4>Your Order</h4>
+                            <div class="order-total">
+                                <ul class="order-table">
+                                    <li>Product <span>Total</span></li>
+                                    {% for i in cart %}
+                                    <li class="fw-normal">{{ i.food_item.name }} x {{ i.quantity }} <span>&#8377;{{ i.food_item.price1 }}</span></li>
+                                    <input type="hidden" name="food_item_name()" value="{{ i.food_item.name }}">
+                                    <input type="hidden" name="quantity()" value="{{ i.quantity }}">
+                                    <input type="hidden" name="price()" value="{{ i.food_item.price1 }}">
+                                    {% endfor %}
+                                    <li class="total-price">Total <span>&#8377; {{ total_price }}</span></li>
+                                    <input type="hidden" name="total_price" value="{{ total_price }}">
+                                </ul>
+                                <div class="payment-check">
+                                    <div class="payment-dropdown">
+                                        <label for="payment-method">Payment Method:</label>
+                                        <select class="form-select" id="payment-method" name="payment_method">
+                                            <option value="select">Select</option>
+                                            <option value="cash">Cash</option>
+                                            <option value="stripe">Stripe / Online</option>
+
+                                        </select>
+                                    </div>
+                                    <!-- <div class="pc-item">
+                                        <label for="pc-paypal">
+                                            Cash
+                                            <input type="checkbox" id="pc-paypal">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div> -->
+                                </div>
+                                <div class="order-btn">
+                                    <button type="submit" class="site-btn place-btn">Place Order</button>
+                                    <!-- <a href="{% url 'create_checkout_session' %}" class="site-btn place-btn">Place Order</a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <!-- Shopping Cart Section End -->
+
+    {% endblock %}

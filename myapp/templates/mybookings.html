@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+<script>
+    window.onload = function() {
+        var msg = "{{ msg }}";
+        if (msg) {
+            alert(msg);
+        }
+    };
+</script>
+    <!-- Shopping Cart Section Begin -->
+    <section class="shopping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="cart-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Res. ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Contact</th>
+                                    <th>Persons</th>
+                                    <th>date</th>
+                                    <th>Time</th>
+                                    <th>P Status</th>
+                                    <th><i class="ti-close"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if reservation %}
+                                {% for reservation in reservation %}
+                                <tr>
+                                    <td>{{ reservation.id }}</td>
+                                    <td>{{ reservation.name }}</td>
+                                    <td>{{ reservation.email }}</td>
+                                    <td>{{ reservation.mobile }}</td>
+                                    <td>{{ reservation.person }}</td>
+                                    <td>{{ reservation.date }}</td>
+                                    <td>{{ reservation.time }}</td>
+                                    <td><span class="badge badge-success">Success</span></td>
+                                    <td class="close-td first-row"><a href="{% url 'cancel_reservation' pk=reservation.pk %}"><i class="ti-close"></i></td>
+                                </tr>
+                                {% endfor %}
+                                {% else %}
+                                <b><h4>You Have No Reservations Yet.</b></h4><br>
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Shopping Cart Section End -->
+
+    {% endblock %}

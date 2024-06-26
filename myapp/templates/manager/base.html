@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Fashi Template">
+    <meta name="keywords" content="Fashi, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="/static/img/favicon-icon.jpeg" rel="shortcut icon"/>
+    <title>Silver Spoon</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/dark-mode.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <style>
+        /* Additional CSS for layout */
+        .col-md-3 {
+            width: 25%;
+            float: left;
+            font-size: 20px;
+            /* font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+            font-weight: 1000;
+            text-align: left;
+        }
+
+       /* Additional CSS for navigation styling */
+.nav-menu li {
+    display: block;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.nav-menu li:last-child {
+    margin-bottom: 0; /* Remove margin bottom for the last item */
+    border-bottom: none; /* Remove border bottom for the last item */
+}
+
+.nav-menu li a {
+    color: black; /* Set the color for the navigation links */
+    text-decoration: none; /* Remove underline from the links */
+    padding: 5px; /* Add padding to the links */
+}
+
+.nav-menu li a:hover {
+    background-color: #e7ab3c; /* Add background color on hover */
+}
+
+.nav-menu li.active {
+    background-color: #e7ab3c; /* Add background color for active item */
+}
+
+/* Active state for the navigation links */
+.nav-menu li.active a {
+    font-weight: bold; /* Make the active link bold */
+}
+
+
+        .col-md-9 {
+            width: 75%;
+            float: left;
+        }
+        
+    </style>
+</head>
+
+<body>
+ <!-- Page Preloder -->
+ <div id="preloder">
+    <div class="loader"></div>
+</div>
+
+<!-- Header Section Begin -->
+<header class="header-section">
+    <div class="header-top">
+        <div class="container">
+            <div class="ht-left">
+                <div class="mail-service">
+                    <a href="./index.html">
+                        <img src="/static/img/new-logo.png" alt="" height="50px" width="150px">
+                    </a>
+                </div>
+                <div class="mail-service">
+                    &nbsp;&nbsp;&nbsp;&nbsp; <i class=" fa fa-envelope"></i>
+                    hello.silverspoon@gmail.com
+                </div>
+                <div class="phone-service">
+                    <i class=" fa fa-phone"></i>
+                    +91 9898252545
+                </div>
+            </div>
+            <div class="ht-right">
+                {% if request.session.email %}
+                <!-- <a href="{% url 'logout' %}" class="login-panel"><img src="{{request.session.profile_pic}}" width="30px" height="30px" style="border-radius: 50%; border: 0.7px solid black;"> {{request.session.fname}} Logout</a> -->
+                <div class="login-panel">
+                <div class="dropdown">
+                   <b> Manager @</b>
+                      <img src="{{request.session.profile_pic}}" width="30px" height="30px" style="border-radius: 50%; border: 0.7px solid black;">
+                      {{request.session.fname}} 
+                    <div class="dropdown-content">
+                      <a href="{% url 'logout' %}">Logout</a>
+                    </div>
+                  </div>
+                </div>
+                   
+                {% else %}
+
+                <a href="{% url 'login' %}" class="login-panel"><i class="fa fa-user"></i>Login</a>
+                {% endif %}
+                <div class="top-social">
+                    <a href="#"><i class="ti-facebook"></i></a>
+                    <a href="#"><i class="ti-twitter-alt"></i></a>
+                    <a href="#"><i class="ti-linkedin"></i></a>
+                    <a href="#"><i class="ti-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <center><h4>Manager Side</h4></center>
+         <!-- Main Content Section -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-md-3">
+                <nav>
+                    <!-- Your navigation menu -->
+                    <ul class="nav-menu">
+                        <li class="{% if request.path == '/user/' %}active{% endif %}"><a href="{% url 'user' %}"  style="font-size: 14px;">User</a></li>
+                        <li class="{% if request.path == '/category/' %}active{% endif %}"><a href="{% url 'category' %}"  style="font-size: 14px;">Category</a></li>
+                        <li class="{% if request.path == '/food_items/' %}active{% endif %}"><a href="{% url 'food_items' %} "  style="font-size: 14px;">Food Items</a></li>
+                        <li class="{% if request.path == '/reservations/' %}active{% endif %}"><a href="{% url 'reservations' %}"  style="font-size: 14px;">Reservations</a></li>
+                        <li class="{% if request.path == '/feedbacks/' %}active{% endif %}"><a href="{% url 'feedbacks' %}"  style="font-size: 14px;">Feedbacks</a></li>
+                        <li class="{% if request.path == '/orders/' %}active{% endif %}"><a href="{% url 'orders' %}"  style="font-size: 14px;">Orders</a></li>
+                        <li class="{% if request.path == '/delivery_persons/' %}active{% endif %}"><a href="{% url 'delivery_persons' %}"  style="font-size: 14px;">Delivery Persons</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- End Sidebar Navigation -->
+
+            <!-- Main Content -->
+            <div class="col-md-9">
+                <!-- Content Section -->
+                {% block content %}
+                {% endblock %}
+                <!-- End Content Section -->
+            </div>
+            <!-- End Main Content -->
+        </div>
+    </div>
+    <!-- End Main Content Section -->
+<!-- Js Plugins -->
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'js/jquery.countdown.min.js' %}"></script>
+<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery.zoom.min.js' %}"></script>
+<script src="{% static 'js/jquery.dd.min.js' %}"></script>
+<script src="{% static 'js/jquery.slicknav.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>

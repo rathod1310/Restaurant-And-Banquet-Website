@@ -1,0 +1,56 @@
+{% extends 'manager/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+
+    <!-- Register Section Begin -->
+    <div class="register-login-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="register-form">
+                        <h2>Add Food Item</h2>
+                        {% if msg %}
+                        <p class="card-text text-primary text-center">{{msg}}</p>
+                    {% endif %}
+                    <form name="add_food_item" method="post" action="{% url 'add_food_item' %}" enctype="multipart/form-data">    
+                        {% csrf_token %}  
+                        <div class="group-input">
+                            <select class="form-control" id="category"  name="category">
+                                <option>---Select User Type</option>
+                                {% for category in category %}                           
+                                <option value="{{ category.name }}" name="category">{{ category.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                                    <div class="group-input">
+                                        <input class="form-control" type="text" placeholder="Name" name="name">
+                                    </div>
+                                    <div class="group-input">
+                                        <input class="form-control" type="text" placeholder="Description" name="description">
+                                    </div>
+                                    <div class="group-input">
+                                        <input class="form-control" type="text" placeholder="Price 1" name="price1">
+                                    </div>
+                                    <div class="group-input">
+                                        <input class="form-control" type="text" name="price2" placeholder="Price 2">
+                                    </div>
+                                    <div class="group-input">
+                                        <input class="form-control" type="file" name="image">
+                                    </div>
+                                    <div class="group-input">
+                                        <button class="btn btn-primary" type="submit">Submit</button>
+                                    </div>
+                                </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Register Form Section End -->
+    
+    {% endblock %}

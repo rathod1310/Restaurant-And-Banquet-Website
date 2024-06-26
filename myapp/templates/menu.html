@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+<style>
+    /* Add some basic styling for clarity */
+    .pagination {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      justify-content: center;
+    }
+
+    .pagination-item {
+      margin: 0 5px;
+      padding: 5px 12px;
+      border-radius: 5px;
+      color: #e7ab3c;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .pagination-item:hover {
+      background-color: #e7ab3c;
+      color: #fff;
+    }
+    .active {
+      background-color: #e7ab3c;
+      color: #fff;
+    }
+  </style>
+<center>
+<div class="container mt-3" style="font-size: 22px; background: linear-gradient(45deg, #e7ab3c, #fe8c00);">
+    {% if messages %}
+        <div class="alert alert-dismissible fade show" role="alert">
+            {% for message in messages %}
+                <strong>{{ message.tags }}</strong> {{ message }}
+            {% endfor %}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
+</div>
+</center>
+
+    <!-- Product Shop Section Begin -->
+    <section class="product-shop spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
+                    <div class="filter-widget">
+                        <h4 class="fw-title">Categories</h4>
+                        <ul class="filter-catagories">
+                           <li><a href="{% url 'menu' %}">All</a></li>
+                            {% for category in categories %}
+                            <li><a href="?category={{ category.id }}">{{ category.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9 order-1 order-lg-2">
+                    <div class="product-show-option">
+                        <div class="row">
+                            <div class="col-lg-7 col-md-7">
+                                <form action="{% url 'menu' %}" method="get">
+                                    <div class="select-option">
+                                        <select class="sorting" name="sorting">
+                                            <option value="">Default Sorting</option>
+                                            <option value="price_low_to_high">By Price (low to high)</option>
+                                            <option value="a_to_z">A To Z</option>
+                                            <option value="z_to_a">Z To A</option>
+                                        </select>
+                                        <input type="submit" value="Sort" class="btn btn-dark">
+                                    </div>
+                                </form>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-list">
+                        <div class="row">
+                            {% for food_item in food_item %}
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="product-item">
+                                    <div class="pi-pic">
+                                        <img src="{{ food_item.image.url }}" alt="{{ food_item.name }}">
+                                        <div class="icon">
+                                            
+                                        </div>
+                                        <ul>
+                                            {% if request.session.email %}
+                                            <li ><a href="{% url 'add_to_cart' pk=food_item.pk %}"><i class="icon_bag_alt"></i></a></li>
+                                            <!-- <li class="quick-view"><a href="#">+ Quick View</a></li> -->
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <li class="w-icon"><a href="{% url 'add_to_wishlist' pk=food_item.pk %}"><i class="icon_heart_alt"></i></a></li>
+                                            {% else %}
+                                            <li ><a href="{% url 'login' %}"><i class="fas fa-user">Login</i></a></li>
+                                            {% endif %}
+                                        </ul>
+                                    </div>
+                                    <div class="pi-text">
+                                        <div class="catagory-name">{{ food_item.description }}</div>
+                                        <a href="#">
+                                            <h5>{{ food_item.name }}</h5>
+                                        </a>
+                                        <div class="product-price">
+                                            &#8377;{{ food_item.price1 }}
+                                            <span>&#8377; {{ food_item.price2 }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- <div class="col-md-12">
+                <ul class="pagination">
+                    <li class="pagination-item">&lt;&lt;</li>
+                    <li class="pagination-item active">1</li>
+                    <li class="pagination-item">2</li>
+                    <li class="pagination-item">3</li>
+                    <li class="pagination-item">4</li>
+                    <li class="pagination-item">5</li>
+                    <li class="pagination-item">&gt;&gt;</li>
+                  </ul>
+              </div> -->
+        </div>
+    </section>
+    <!-- Product Shop Section End -->
+
+    {% endblock %}

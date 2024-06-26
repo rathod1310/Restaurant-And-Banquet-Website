@@ -1,0 +1,61 @@
+{% extends 'manager/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+
+    <!-- Register Section Begin -->
+    <div class="register-login-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="register-form">
+                        <h2>Edit Food Item</h2>
+                        {% if msg %}
+                        <p class="card-text text-primary text-center">{{msg}}</p>
+                    {% endif %}
+                    <form name="edit_food_item" method="post" action="#" enctype="multipart/form-data">    
+                        {% csrf_token %}  
+                        <div class="group-input">
+                            <select class="form-control" id="category" name="category">
+                                <option value="">---Select Category Type---</option>
+                                {% for category in category %}
+                                    <option value="{{ category.name }}" {% if category.name == current_category %} selected="selected" {% endif %}>{{ category.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        
+                        
+                                    <div class="group-input">
+                                        <input class="form-control" type="text" placeholder="Name" value="{{food_items.name}}" name="name">
+                                    </div>
+                                    <div class="group-input">
+                                        <input class="form-control" type="text" placeholder="Description" value="{{food_items.description}}" name="description">
+                                    </div>
+                                    <div class="group-input">
+                                        <input class="form-control" type="text" placeholder="Price 1" value="{{food_items.price1}}" name="price1">
+                                    </div>
+                                    <div class="group-input">
+                                        <input class="form-control" type="text" value="{{food_items.price2}}" name="price2" placeholder="Price 2">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="food_items">Profile Picture :-</label>
+                                        <img src="{{food_items.image.url}}" width="100px" height="100px" class="img-thumbnail">
+                                        <input class="form-control" type="file" id="food_items" name="food_items">
+                                    </div>
+                                    <div class="group-input">
+                                        <button class="btn btn-primary" type="submit">Submit</button>
+                                    </div>
+                                </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Register Form Section End -->
+    
+    {% endblock %}

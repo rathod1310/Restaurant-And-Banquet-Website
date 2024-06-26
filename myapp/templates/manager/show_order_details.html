@@ -1,0 +1,85 @@
+{% extends 'manager/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+<style>
+
+        .order_container {
+            max-width: 600px;
+            margin: 30px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            text-align: center;
+            color: #333;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .order-details {
+            border-top: 2px solid #ddd;
+            padding-top: 20px;
+        }
+
+        .order-details p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .order-details label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .profile-pic {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-pic img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .profile-pic img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="order_container">
+        <h3>Order Details Of id {{ myorder.id }}</h3>
+        <div class="order-details">
+        <p><label>First Name:- </label> {{ myorder.fname }}</p>
+        <p><label>Last Name:- </label> {{ myorder.lname }}</p>
+        <p><label>Email:- </label> {{ myorder.email }}</p>
+        <p><label>Phone:- </label> {{ myorder.phone }}</p>
+        <p><label>Address:- </label> {{ myorder.address }}</p>
+        <p><label>City:- </label> {{ myorder.city }}</p>
+        <p><label>State:- </label> {{ myorder.state }}</p>
+        <p><label>Pincode:- </label> {{ myorder.pincode }}</p>
+        <p><label>Food Item Name:- </label> {{ myorder.food_item_name }}</p>
+        <p><label>Price:- </label> {{ myorder.price }}</p>
+        <p><label>Quantity:- </label> {{ myorder.quantity }}</p>
+        <p><label>Total Price:- </label> {{ myorder.total_price }}</p>
+        <p><label>Payment Method:- </label> {{ myorder.payment_method }}</p>
+        <p><label>Date:- </label> {{ myorder.date }}</p>
+        <p><label>Time:- </label> {{ myorder.time }}</p>
+        <p><label>Delivery Person:- </label> {{ myorder.delivery_person }}</p>
+        <p><label>Status:- </label> {{ myorder.get_status_display }}</p>
+    </div>
+
+    {% endblock %}

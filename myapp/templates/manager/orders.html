@@ -1,0 +1,87 @@
+{% extends 'manager/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+<style>
+
+/* CSS */
+.button-62 {
+  background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
+  border: 0;
+  border-radius: 12px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.button-62:not([disabled]):focus {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
+
+.button-62:not([disabled]):hover {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
+</style>
+    <!-- Shopping Cart Section Begin -->
+    <section class="shopping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="cart-table">
+                        <table>
+                            <thead>
+                                <tr style="background-color: lightgray">
+                                    <th>Order ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Date</th>
+                                    <th>Item</th>
+                                    <th>Items</th>
+                                    <th>Price</th>
+                                    <th><i class="ti-eye"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if myorders %}
+                                {% for myorders in myorders %}
+                                <tr>
+                                    <td>{{ myorders.id }}</td>
+                                    <td>{{ myorders.fname }}</td>
+                                    <td>{{ myorders.email }}</td>
+                                    <td>{{ myorders.date }}</td>
+                                    <td>{{ myorders.time }}</td>
+                                    <td>{{ myorders.food_item_name }} <br> {{ myorders.quantity}} </td>
+                                    <td>&#8377;{{ myorders.total_price }}</td>
+                                    <td class="close-td first-row"><a href="{% url 'show_order_details' pk=myorders.pk %}"><i class="fa fa-eye"></i></a></td>
+                                </tr>
+                                {% endfor %}
+                                {% else %}
+                                <b><h4>You Have No Orders Yet.</b></h4><br>
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Shopping Cart Section End -->
+
+    {% endblock %}

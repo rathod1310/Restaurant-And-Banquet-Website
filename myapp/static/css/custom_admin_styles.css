@@ -1,0 +1,87 @@
+/* custom_admin_styles.css */
+
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styles */
+#header {
+    background-color: #252525; /* Header color */
+    color: #fff;
+    padding: 15px 20px;
+}
+
+#header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+/* Sidebar styles */
+#sidebar {
+    background-color: #e7ab3c; /* Button color */
+    color: #333;
+    width: 250px;
+    float: left;
+    padding: 20px;
+}
+
+/* Main content styles */
+#content {
+    float: left;
+    width: calc(100% - 250px);
+    padding: 20px;
+}
+
+/* Tables styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+th {
+    background-color: #e7ab3c; /* Button color */
+    color: #fff;
+}
+
+/* Form styles */
+input[type="text"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #e7ab3c; /* Button color */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #d49e30; /* Button hover color */
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 768px) {
+    #sidebar, #content {
+        width: 100%;
+        float: none;
+    }
+}

@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+
+    <!-- Shopping Cart Section Begin -->
+    <section class="shopping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="cart-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th class="p-name">Product Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th><i class="ti-close"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if cart %}
+                                {% for i in cart %}
+                                <tr>
+                                    <td class="cart-pic first-row"><img src="{{ i.food_item.image.url }}" alt="" width="190" height="190"></td>
+                                    <td class="cart-title first-row">
+                                        <h5>{{ i.food_item.name }}</h5>
+                                    </td>
+                                    <td class="p-price first-row">&#8377;{{ i.food_item.price1 }}</td>
+                                    <td class="qua-col first-row">
+                                        <div class="quantity">
+                                            <div class="pro-qty-c">
+                                                <div class="product-details">
+                                                    <div class="quantity">
+                                                        <div class="pro-qty-c">
+                                                            <a href="{% url 'decrease_quantity' pk=i.food_item.pk %}" class="qtybtn-dec">-</a>
+                                                            <input type="text" id="quantity_{{ i.food_item.pk }}"  min="1" value="{{ i.quantity }}" readonly>
+                                                            <a href="{% url 'increase_quantity' pk=i.food_item.pk %}" class="qtybtn-inc">+</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="total-price first-row">&#8377;{{ i.total_price }}</td>
+                                    <td class="close-td first-row"><a href="{% url 'remove_from_cart' pk=i.food_item.pk %}"><i class="ti-close"></i></td>
+                                </tr>
+                                {% endfor %}
+                                {% else %}
+                                <b><h4>Your Cart is empty.</b></h4><br>
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="cart-buttons">
+                                <a href="#" class="primary-btn continue-shop">Continue shopping</a>
+                                <a href="#" class="primary-btn up-cart">Update cart</a>
+                            </div>
+                            <div class="discount-coupon">
+                                <h6>Discount Codes</h6>
+                                <form action="#" class="coupon-form">
+                                    <input type="text" placeholder="Enter your codes">
+                                    <button type="submit" class="site-btn coupon-btn">Apply</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 offset-lg-4">
+                            <div class="proceed-checkout">
+                                <ul>
+                                    <li class="subtotal">Subtotal <span>&#8377; {{ total_price }}</span></li>
+                                    <li class="cart-total">Total <span>&#8377; {{ total_price }}</span></li>
+                                </ul>
+                                <a href="{% url 'checkout' %}" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Shopping Cart Section End -->
+
+    {% endblock %}

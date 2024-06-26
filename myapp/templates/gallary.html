@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+<style>
+  .img-fluid {
+    padding-bottom: 20px;
+}
+</style>
+<section id="gallery" class="gallery">
+    &nbsp;  &nbsp;  &nbsp;
+          <div class="container" data-aos="fade-up">
+            <div class="section-title">
+              <center>
+              <h2>Gallery</h2>
+              <p>Some photos from Our Restaurant</p>
+              </center>
+            </div>
+          </div>
+    
+          <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
+    
+            <div class="row g-0">
+    
+              <div class="col-lg-3 col-md-4">
+                <div class="gallery-item">
+                 <a href="/static/img/gallery/1.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                    <img src="/static/img/gallery/1.jpg" alt="" class="img-fluid">
+                  </a>
+                </div>
+              </div>
+    
+              <div class="col-lg-3 col-md-4">
+                <div class="gallery-item">
+                  <a href="/static/img/gallery/2.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                    <img src="/static/img/gallery/2.jpg" alt="" class="img-fluid">
+                  </a>
+                </div>
+              </div>
+    
+              <div class="col-lg-3 col-md-4">
+                <div class="gallery-item">
+                  <a href="/static/img/gallery/3.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                    <img src="/static/img/gallery/3.jpg" alt="" class="img-fluid">
+                  </a>
+                </div>
+              </div>
+    
+              <div class="col-lg-3 col-md-4">
+                <div class="gallery-item">
+                  <a href="/static/img/gallery/4.jpg.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                    <img src="/static/img/gallery/4.jpg" alt="" class="img-fluid">
+                  </a>
+                </div>
+              </div>
+    
+              <div class="col-lg-3 col-md-4">
+                <div class="gallery-item">
+                  <a href="/static/img/gallery/5.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                    <img src="/static/img/gallery/5.jpg" alt="" class="img-fluid">
+                  </a>
+                </div>
+              </div>
+    
+              <div class="col-lg-3 col-md-4">
+                <div class="gallery-item">
+                  <a href="/static/img/gallery/6.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                    <img src="/static/img/gallery/6.jpg" alt="" class="img-fluid">
+                  </a>
+                </div>
+              </div>
+    
+              <div class="col-lg-3 col-md-4">
+                <div class="gallery-item">
+                  <a href="/static/img/gallery/7.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                    <img src="/static/img/gallery/7.jpg" alt="" class="img-fluid">
+                  </a>
+                </div>
+              </div>
+    
+              <div class="col-lg-3 col-md-4">
+                <div class="gallery-item">
+                  <a href="/static/img/gallery/1.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                    <img src="/static/img/gallery/1.jpg" alt="" class="img-fluid">
+                  </a>
+                </div>
+              </div>
+    
+            </div>
+    
+          </div>
+        </section><!-- End Gallery Section -->
+    &nbsp;  &nbsp;  &nbsp;
+        <!-- ======= Banquet Section ======= -->
+        <section id="events" class="events">
+          <div class="container" data-aos="fade-up">
+    
+            <div class="section-title">
+              <center>
+              <h2>Banquets</h2>
+              <p class="fst-italic">Organize Your Function in our Restaurant Banquet</p>
+              </center>
+            </div>
+    
+            <div class="events-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
+              <div class="swiper-wrapper">
+    
+                <div class="gallery-item">
+                  <div class="row event-item">
+                    <div class="col-lg-6">
+                      <img src="/static/img/e-1.jpg" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 content">
+                      <h4>&#10149; Silver </h4>
+                      <div class="price">
+                        <p class="fst-italic"><span class="fst-italic">Capicity= Upto <b>200 people</b></span></p>
+                      </div>
+                      <p class="fst-italic">
+                        &#9866; The Silver Banquet offers an intimate and stylish setting for events, with a capacity for up to 200 people. Our venue is designed to provide a sophisticated atmosphere, perfect for weddings, corporate functions, and other special occasions. 
+                      </p>
+                      
+                      <p class="fst-italic">
+                        &#9866; Our dedicated team ensures a seamless and memorable experience, paying attention to every detail. Choose the Silver Banquet for a perfect blend of elegance and personalized service for your next event.
+                      </p>
+                      <p><a href="{% static 'img/pdf/BANQUET.pdf' %}" download="BANQUET.pdf" class="btn btn-outline-info"><b style="font-size: 16px;"> &#x2B07;</b> Dowload Brochure.</a></p>
+                    </div>
+                  </div>
+                </div><!-- End testimonial item -->
+    
+                <div class="gallery-item">
+                  <div class="row event-item">
+                    <div class="col-lg-6">
+                      <img src="/static/img/e-2.jpg" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 content">
+                      <h4>&#10149; Platinium</h4>
+                      <div class="price">
+                        <p class="fst-italic"><span>Capicity= Upto <b>350 people</b></span></p>
+                      </div>
+                      <p class="fst-italic">
+                        
+                        &#9866; Welcome to Platinum Banquet, where grandeur meets excellence. With a generous capacity of up to 350 people, we specialize in hosting extraordinary events
+                      </p>
+                      
+                      <p class="fst-italic">
+                        &#9866; Our sophisticated venue, coupled with meticulous attention to detail, ensures an unforgettable experience for weddings, corporate gatherings, and special celebrations. Choose Platinum Banquet for a perfect fusion of opulence, spaciousness, and unparalleled service.
+                      </p>
+                      <p><a href="{% static 'img/pdf/BANQUET.pdf' %}" download="BANQUET.pdf" class="btn btn-outline-info"><b style="font-size: 16px;"> &#x2B07;</b> Dowload Brochure.</a></p>
+                    </div>
+                  </div>
+                </div><!-- End testimonial item -->
+    
+                <div class="gallery-item">
+                  <div class="row event-item">
+                    <div class="col-lg-6">
+                      <img src="/static/img/e-3.jpg" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 content">
+                      <h4>&#10149; Gold</h4>
+                      <div class="price">
+                        <p class="fst-italic"><span>Capicity= Upto <b>500 people</b></span></p>
+                      </div>
+                      <p class="fst-italic">
+                        &#9866; The Gold Banquet, your destination for unparalleled grandeur and limitless possibilities. With a capacious setting accommodating up to 500 people, we redefine opulence in event hosting.
+                      </p>
+                      
+                      <p class="fst-italic">
+                        &#9866; Our venue is meticulously designed to cater to a diverse range of occasions, from lavish weddings to expansive corporate galas. At Gold Banquet, we pride ourselves on creating immersive experiences that blend elegance, versatility, and seamless service for your memorable events.
+                      </p>
+                      <p><a href="{% static 'img/pdf/BANQUET.pdf' %}" download="BANQUET.pdf" class="btn btn-outline-info"><b style="font-size: 16px;"> &#x2B07;</b> Dowload Brochure.</a></p>
+                    </div>
+                  </div>
+                </div><!-- End testimonial item -->
+    
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+    
+          </div>
+        </section><!-- End Events Section -->
+    <!-- Gallary Section End -->
+
+    {% endblock %}

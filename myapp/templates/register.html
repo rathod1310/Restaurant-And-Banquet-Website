@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+
+    <!-- Register Section Begin -->
+    <div class="register-login-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="register-form">
+                        <h2>Register</h2>
+                        {% if msg %}
+                        <p class="card-text text-primary text-center">{{msg}}</p>
+                    {% endif %}
+                    <form name="register" method="post" onsubmit="return validateForm()" action="{% url 'register' %}" enctype="multipart/form-data">    
+                        {% csrf_token %}  
+                        <div class="group-input" hidden>
+                            <select class="form-control" id="user_type"  name="user_type">
+                                <option value="customer">Customer</option>
+                                <option value="manager">Manager</option>
+                            </select>
+                        </div>
+                                    <div class="group-input">
+                                        <input class="form-control" type="text" placeholder="First Name" name="fname" pattern="[A-Za-z]+" title="First Name Must Have Alphabetical Characters" required>
+                                    </div>
+                                    <div class="group-input">
+                                        <input class="form-control" type="text" placeholder="Last Name" name="lname" pattern="[A-Za-z ]+" title="Last Name name must contain only alphabetic characters" required>
+                                    </div>
+                                    <div class="group-input">
+                                        <input class="form-control" type="email" placeholder="Email" name="email" required>
+                                    </div>
+                                    <div class="group-input">
+                                        <input class="form-control" type="text" name="mobile" placeholder="Mobile" pattern="[0-9]{10}" title="Invalid mobile number (10 digits only)" required>
+                                    </div>
+                                    <div class="group-input">
+                                        <input class="form-control" type="text" name="address" placeholder="Address" required>
+                                    </div>
+                                    <div class="group-input">
+                                        <input class="form-control" type="text" name="city" placeholder="City" pattern="[A-Za-z ]+" title="City name must contain only alphabetic characters" required>
+                                    </div>
+                                    <div class="group-input">
+                                        <input class="form-control" type="text" name="state" placeholder="State" pattern="[A-Za-z ]+" title="State name must contain only alphabetic characters" required>
+                                    </div>
+                                    <div class="group-input">
+                                        <input class="form-control" type="text" name="pincode" placeholder="Pincode" pattern="[0-9]{6}" title="Invalid pincode (6 digits only)" required>
+                                    </div>
+                                    <div class="group-input">
+                                        <input class="form-control" type="password" name="password" placeholder="Password" id="password" required>
+                                        <span id="error-msg" style="color: red; font-size: 12px;"></span>
+                                    </div>
+                                    <div class="group-input">
+                                        <input class="form-control" type="password" name="cpassword" placeholder="Confirm Password" required>
+                                    </div>
+                                    <div class="group-input">
+                                        <input class="form-control" type="file" name="profile_pic" required>
+                                    </div>
+                                    <div class="group-input">
+                                        <button class="btn btn-primary" type="submit">Register</button>
+                                    </div>
+                                </form>
+                        <div class="switch-login">
+                            <a href="{% url 'login' %}" class="or-login">Or Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Register Form Section End -->
+    <script>
+        function validateForm() {
+            var passwordInput = document.getElementById('password').value;
+
+            if (passwordInput.length < 8 || passwordInput.length > 12 || !/\d/.test(passwordInput) || !/[a-zA-Z]/.test(passwordInput)) {
+                document.getElementById('error-msg').innerText = 'Password must be 8 to 12 characters long and contain letters and numbers.';
+                return false;
+            }
+
+        return true;
+        }
+    </script>
+    
+
+    {% endblock %}

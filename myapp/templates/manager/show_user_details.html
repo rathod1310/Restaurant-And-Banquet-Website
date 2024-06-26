@@ -1,0 +1,80 @@
+{% extends 'manager/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+<style>
+
+        .user_container {
+            max-width: 600px;
+            margin: 30px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            text-align: center;
+            color: #333;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .user-details {
+            border-top: 2px solid #ddd;
+            padding-top: 20px;
+        }
+
+        .user-details p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .user-details label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .profile-pic {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-pic img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .profile-pic img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="user_container">
+        <h3>User Details Of <b> &#64;{{ user.fname }}</b></h3>
+        <div class="user-details">
+            <div class="profile-pic">
+                <img src="{{ user.profile_pic.url }}" alt="Profile Picture">
+            </div>
+            <p><label>First Name:- </label> {{ user.fname }}</p>
+            <p><label>Last Name:- </label> {{ user.lname }}</p>
+            <p><label>Email:- </label> {{ user.email }}</p>
+            <p><label>Mobile:- </label> {{ user.mobile }}</p>
+            <p><label>Address:- </label> {{ user.address }}</p>
+            <p><label>City:- </label> {{ user.city }}</p>
+            <p><label>State:- </label> {{ user.state }}</p>
+            <p><label>Pincode:- </label> {{ user.pincode }}</p>
+        </div>
+    </div>
+
+    {% endblock %}

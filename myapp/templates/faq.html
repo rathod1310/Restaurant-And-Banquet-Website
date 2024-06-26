@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+
+    <!-- Faq Section Begin -->
+    <div class="faq-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="faq-accordin">
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                <div class="card-heading active">
+                                    <a class="active" data-toggle="collapse" data-target="#collapseOne">
+                                        How TO Order Food?
+                                    </a>
+                                </div>
+                                <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <p>1) Go To Menu Page Which Food You Want TO Order Select And Put Into Cart.<br>
+                                            2) Then Press Checkout Button And Fill The Details Choose The Payment Method.<br>
+                                            3) Your Order Placed Successfully.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseTwo">
+                                        How To Make Reservation (Table Booking)?
+                                    </a>
+                                </div>
+                                <div id="collapseTwo" class="collapse" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <p>1) Go To Reservation Page .<br>
+                                            2) Fill The Details .<br>
+                                            3) Make .<br>
+                                            4) Your Table Will Booked.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseFour">
+                                        How To Forget Password By OTP?
+                                    </a>
+                                </div>
+                                <div id="collapseFour" class="collapse" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <p>1) Go To Forget Password Page .<br>
+                                            2) Enter Your Registerd Mobile Number .<br>
+                                            3) Enter OTP (Sent TO Your Mobile Number) .<br>
+                                            4) Enter New Password .<br>
+                                            5)Password Forget Successfully.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseThree">
+                                        If You Have Any Other Query?
+                                    </a>
+                                </div>
+                                <div id="collapseThree" class="collapse" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <p>Contact Silver Spoon And Restaurant Help Desk on :- <br>
+                                        - Email :- help.silverspoon@gmail.com <br>
+                                    - Phone :- 079-12345678 , 079-87654321</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Faq Section End -->
+
+    {% endblock %}

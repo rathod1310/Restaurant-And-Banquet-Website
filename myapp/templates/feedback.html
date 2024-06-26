@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+<style>
+#feedback-rating {
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+}
+
+
+</style>
+ <!-- Feedback Section Begin -->
+ <div class="register-login-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="register-form">
+                    <h2>Feedback</h2>
+                    <form action="{%  url 'feedback' %}" name="feedback" method="POST">
+                        {% csrf_token %}
+                        <div class="group-input">
+                            <label for="feedback-name">Your Name *</label>
+                            <input type="text" id="feedback-name" placeholder="Enter Name" value="{{ user.fname }}" name="name">
+                        </div>
+                        <div class="group-input">
+                            <label for="feedback-email">Your Email *</label>
+                            <input type="email" id="feedback-email" placeholder="Enter Email" value="{{ user.fname }}" name="email">
+                        </div>
+                        <div class="group-input">
+                            <label for="feedback-rating">Rating *</label>
+                            <select id="feedback-rating" name="rating">
+                                <option value="1">1 - Poor</option>
+                                <option value="2">2 - Fair</option>
+                                <option value="3">3 - Good</option>
+                                <option value="4">4 - Very Good</option>
+                                <option value="5">5 - Excellent</option>
+                            </select>
+                        </div>
+                        <div class="group-input">
+                            <label for="feedback-msg">Feedback Message *</label>
+                            <input type="text" id="feedback-message" placeholder="Enter Your Review..." name="message">
+                        </div>
+                        <button type="submit" class="site-btn feedback-btn">Submit Feedback</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Feedback Form Section End -->
+
+
+    {% endblock %}

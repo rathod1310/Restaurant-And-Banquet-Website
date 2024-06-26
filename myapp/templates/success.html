@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+<style>
+
+  .custom {
+      text-align: center;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .success-icon {
+      color: #2ecc71;
+      font-size: 60px;
+      margin-bottom: 20px;
+  }
+
+  h3 {
+      color: #333;
+  }
+
+  span {
+      color: #555;
+      font-size: 18px;
+      margin-top: 10px;
+  }
+
+  .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 20px;
+      background-color: #3498db;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+  }
+
+  .btn:hover {
+      background-color: #2980b9;
+  }
+</style>
+</head>
+<body>
+<div class="custom">
+  <div class="success-icon">&#10003;</div>
+  <h2>Order Placed Successfully</h2>
+  <span>Thank you for your Order. Your Order was Placed successfully .</span><br>
+  <a href="{% url 'menu' %}" class="btn">Continue</a>
+</div>
+      {% endblock %}

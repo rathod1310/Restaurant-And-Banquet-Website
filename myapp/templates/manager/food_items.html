@@ -1,0 +1,105 @@
+{% extends 'manager/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+<style>
+    /* CSS */
+.button-18 {
+  align-items: center;
+  background-color: #0A66C2;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+}
+
+.button-18:hover,
+.button-18:focus { 
+  background-color: #16437E;
+  color: #ffffff;
+}
+
+.button-18:active {
+  background: #09223b;
+  color: rgb(255, 255, 255, .7);
+}
+
+.button-18:disabled { 
+  cursor: not-allowed;
+  background: rgba(0, 0, 0, .08);
+  color: rgba(0, 0, 0, .3);
+}
+</style>
+<!-- Shopping Cart Section Begin -->
+<section class="shopping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="cart-table">
+                    <div class="float-right mb-3">
+                        <a href="{% url 'add_food_item' %}" class="button-18">Add New Food Item</a>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr style="background-color: lightgray">
+                                <th>Food Item. ID</th>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Price 1</th>
+                                <th>Price 2</th>
+                                <th>EDIT</th>
+                                <th>DELETE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if food_items %}
+                            {% for food_items in food_items %}
+                            <tr>
+                                <td>{{ food_items.id }}</td>
+                                <td><img src="{{ food_items.image.url }}" alt="" width="60" height="60"></td>
+                                <td>{{ food_items.name }}</td>
+                                <td>{{ food_items.category }}</td>
+                                <td>{{ food_items.price1 }}</td>
+                                <td>{{ food_items.price2 }}</td>
+                                <td class="close-td first-row"><a href="{% url 'edit_food_item' pk=food_items.pk %}"><i class="fa fa-edit"> Edit</i></a></td>
+                                <td class="close-td first-row"><a href="{% url 'delete_food_items' pk=food_items.pk %}"><i class="fa fa-trash-o"></i></a></td>
+                            </tr>
+                            {% endfor %}
+                            {% else %}
+                            <b><h4>food_itemss Not FOund.</b></h4><br>
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shopping Cart Section End -->
+
+    {% endblock %}
